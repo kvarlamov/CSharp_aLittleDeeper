@@ -5,4 +5,4 @@ Projects names in solution indicates which examples are cowered in project.
 
 
 ***
-This projects help me keep in mind interesting tools of C#, maybe it help you too;)
+This projects helps me keep in mind interesting tools of C#, maybe it help you too;)
