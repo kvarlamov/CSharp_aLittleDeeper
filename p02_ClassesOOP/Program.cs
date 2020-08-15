@@ -7,9 +7,7 @@ namespace p02_ClassesOOP
     {
         static void Main(string[] args)
         {
-            Point p1 = new Point(1, 2);
-            Point p2 = new Point(3, 2);
-            var p3 = p1 + p2;
+            PolimorphismExample1.Show();
             Console.ReadKey();
         }
     }

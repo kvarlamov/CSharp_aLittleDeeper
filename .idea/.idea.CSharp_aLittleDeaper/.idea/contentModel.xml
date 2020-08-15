@@ -28,7 +28,7 @@
           </e>
         </e>
         <e p="p02_ClassesOOP.csproj" t="IncludeRecursive" />
-        <e p="Polimorfizm.cs" t="Include" />
+        <e p="PolimorphismExample1.cs" t="Include" />
         <e p="Program.cs" t="Include" />
       </e>
       <e p="packages" t="ExcludeRecursive" />

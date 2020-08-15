@@ -2,9 +2,9 @@
 
 namespace p02_ClassesOOP
 {
-    public static class Polimorfizm
+    public static class PolimorphismExample1
     {
-        static void Show()
+        public static void Show()
         {
             A a = new A(), b = new B(), c = new C();
             I ia = new A(), ib = new B(), ic = new C();
