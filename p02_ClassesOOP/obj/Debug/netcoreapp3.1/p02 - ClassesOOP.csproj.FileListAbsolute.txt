@@ -1,0 +1,11 @@
+D:\IT\Programming\C#\DeepLearning\Practice\p02 - ClassesOOP\bin\Debug\netcoreapp3.1\p02 - ClassesOOP.exe
+D:\IT\Programming\C#\DeepLearning\Practice\p02 - ClassesOOP\bin\Debug\netcoreapp3.1\p02 - ClassesOOP.deps.json
+D:\IT\Programming\C#\DeepLearning\Practice\p02 - ClassesOOP\bin\Debug\netcoreapp3.1\p02 - ClassesOOP.runtimeconfig.json
+D:\IT\Programming\C#\DeepLearning\Practice\p02 - ClassesOOP\bin\Debug\netcoreapp3.1\p02 - ClassesOOP.runtimeconfig.dev.json
+D:\IT\Programming\C#\DeepLearning\Practice\p02 - ClassesOOP\bin\Debug\netcoreapp3.1\p02 - ClassesOOP.dll
+D:\IT\Programming\C#\DeepLearning\Practice\p02 - ClassesOOP\bin\Debug\netcoreapp3.1\p02 - ClassesOOP.pdb
+D:\IT\Programming\C#\DeepLearning\Practice\p02 - ClassesOOP\obj\Debug\netcoreapp3.1\p02 - ClassesOOP.csprojAssemblyReference.cache
+D:\IT\Programming\C#\DeepLearning\Practice\p02 - ClassesOOP\obj\Debug\netcoreapp3.1\p02 - ClassesOOP.AssemblyInfoInputs.cache
+D:\IT\Programming\C#\DeepLearning\Practice\p02 - ClassesOOP\obj\Debug\netcoreapp3.1\p02 - ClassesOOP.AssemblyInfo.cs
+D:\IT\Programming\C#\DeepLearning\Practice\p02 - ClassesOOP\obj\Debug\netcoreapp3.1\p02 - ClassesOOP.dll
+D:\IT\Programming\C#\DeepLearning\Practice\p02 - ClassesOOP\obj\Debug\netcoreapp3.1\p02 - ClassesOOP.pdb
