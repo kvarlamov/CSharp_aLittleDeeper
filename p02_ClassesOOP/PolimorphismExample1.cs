@@ -11,7 +11,6 @@ namespace p02_ClassesOOP
             C c3 = new C();
             Console.WriteLine($"{a.X},{b.X}, {c.X}, {ia.X}, {ib.X}, {ic.X}");
             Console.WriteLine(c3.X);
-            Console.ReadKey();
         }
     }
     public interface I
