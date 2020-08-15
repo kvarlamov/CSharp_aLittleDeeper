@@ -14,11 +14,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\IT\\Programming\\C#\\CSharp_aLittleDeaper\\p01_Operators\\p01_Operators.csproj",
+      "projectUniqueName": "D:\\IT\\Programming\\C#\\CSharp_aLittleDeeper\\p01_Operators\\p01_Operators.csproj",
       "projectName": "p01_Operators",
-      "projectPath": "D:\\IT\\Programming\\C#\\CSharp_aLittleDeaper\\p01_Operators\\p01_Operators.csproj",
+      "projectPath": "D:\\IT\\Programming\\C#\\CSharp_aLittleDeeper\\p01_Operators\\p01_Operators.csproj",
       "packagesPath": "C:\\Users\\Constantine\\.nuget\\packages\\",
-      "outputPath": "D:\\IT\\Programming\\C#\\CSharp_aLittleDeaper\\p01_Operators\\obj\\",
+      "outputPath": "D:\\IT\\Programming\\C#\\CSharp_aLittleDeeper\\p01_Operators\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

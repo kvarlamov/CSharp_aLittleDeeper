@@ -14,11 +14,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\IT\\Programming\\C#\\CSharp_aLittleDeaper\\p02_ClassesOOP\\p02_ClassesOOP.csproj",
+      "projectUniqueName": "D:\\IT\\Programming\\C#\\CSharp_aLittleDeeper\\p02_ClassesOOP\\p02_ClassesOOP.csproj",
       "projectName": "p02_ClassesOOP",
-      "projectPath": "D:\\IT\\Programming\\C#\\CSharp_aLittleDeaper\\p02_ClassesOOP\\p02_ClassesOOP.csproj",
+      "projectPath": "D:\\IT\\Programming\\C#\\CSharp_aLittleDeeper\\p02_ClassesOOP\\p02_ClassesOOP.csproj",
       "packagesPath": "C:\\Users\\Constantine\\.nuget\\packages\\",
-      "outputPath": "D:\\IT\\Programming\\C#\\CSharp_aLittleDeaper\\p02_ClassesOOP\\obj\\",
+      "outputPath": "D:\\IT\\Programming\\C#\\CSharp_aLittleDeeper\\p02_ClassesOOP\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

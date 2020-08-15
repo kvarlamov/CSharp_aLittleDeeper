@@ -1,7 +1,7 @@
 # CSharp_aLittleDeaper
 
 This is a С# learning and reference info repository.
-Here i include interesting examples of C# using or some concepts or tools which i want to understand deeper.
+Here i include interesting examples of C#(not always my own;)) using or some concepts or tools which i want to understand deeper.
 Projects names in solution indicates which examples are cowered in project.
 Project list:
 
