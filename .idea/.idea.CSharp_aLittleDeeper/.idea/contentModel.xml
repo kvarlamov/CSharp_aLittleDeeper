@@ -33,6 +33,19 @@
         <e p="PolimorphismExample3.cs" t="Include" />
         <e p="Program.cs" t="Include" />
       </e>
+      <e p="p03_Interfaces" t="IncludeRecursive">
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="LinkedList.cs" t="Include" />
+        <e p="obj" t="ExcludeRecursive">
+          <e p="Debug" t="Include">
+            <e p="netcoreapp3.1" t="Include">
+              <e p="p03_Interfaces.AssemblyInfo.cs" t="Include" />
+            </e>
+          </e>
+        </e>
+        <e p="p03_Interfaces.csproj" t="IncludeRecursive" />
+        <e p="Program.cs" t="Include" />
+      </e>
       <e p="packages" t="ExcludeRecursive" />
     </e>
   </component>

@@ -4,6 +4,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "p01_Operators", "p01_Operat
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "p02_ClassesOOP", "p02_ClassesOOP\p02_ClassesOOP.csproj", "{6778D096-1FEF-460E-B215-793E1909EAB5}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "p03_Interfaces", "p03_Interfaces\p03_Interfaces.csproj", "{504EC54F-515C-43AC-BD16-F76F302D2D18}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -18,5 +20,9 @@ Global
 		{6778D096-1FEF-460E-B215-793E1909EAB5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6778D096-1FEF-460E-B215-793E1909EAB5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6778D096-1FEF-460E-B215-793E1909EAB5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{504EC54F-515C-43AC-BD16-F76F302D2D18}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{504EC54F-515C-43AC-BD16-F76F302D2D18}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{504EC54F-515C-43AC-BD16-F76F302D2D18}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{504EC54F-515C-43AC-BD16-F76F302D2D18}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

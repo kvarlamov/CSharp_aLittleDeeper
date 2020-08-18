@@ -1,0 +1,11 @@
+D:\IT\Programming\C#\CSharp_aLittleDeeper\p03_Interfaces\bin\Debug\netcoreapp3.1\p03_Interfaces.exe
+D:\IT\Programming\C#\CSharp_aLittleDeeper\p03_Interfaces\bin\Debug\netcoreapp3.1\p03_Interfaces.deps.json
+D:\IT\Programming\C#\CSharp_aLittleDeeper\p03_Interfaces\bin\Debug\netcoreapp3.1\p03_Interfaces.runtimeconfig.json
+D:\IT\Programming\C#\CSharp_aLittleDeeper\p03_Interfaces\bin\Debug\netcoreapp3.1\p03_Interfaces.runtimeconfig.dev.json
+D:\IT\Programming\C#\CSharp_aLittleDeeper\p03_Interfaces\bin\Debug\netcoreapp3.1\p03_Interfaces.dll
+D:\IT\Programming\C#\CSharp_aLittleDeeper\p03_Interfaces\bin\Debug\netcoreapp3.1\p03_Interfaces.pdb
+D:\IT\Programming\C#\CSharp_aLittleDeeper\p03_Interfaces\obj\Debug\netcoreapp3.1\p03_Interfaces.csprojAssemblyReference.cache
+D:\IT\Programming\C#\CSharp_aLittleDeeper\p03_Interfaces\obj\Debug\netcoreapp3.1\p03_Interfaces.AssemblyInfoInputs.cache
+D:\IT\Programming\C#\CSharp_aLittleDeeper\p03_Interfaces\obj\Debug\netcoreapp3.1\p03_Interfaces.AssemblyInfo.cs
+D:\IT\Programming\C#\CSharp_aLittleDeeper\p03_Interfaces\obj\Debug\netcoreapp3.1\p03_Interfaces.dll
+D:\IT\Programming\C#\CSharp_aLittleDeeper\p03_Interfaces\obj\Debug\netcoreapp3.1\p03_Interfaces.pdb
