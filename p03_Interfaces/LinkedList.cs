@@ -3,17 +3,6 @@ using System.Collections.Generic;
 
 namespace p03_Interfaces
 {
-    public class Node<T> 
-    {
-        public T Data { get; set; }
-        public Node<T> Next { get; set; }
-        
-        public Node(T data)
-        {
-            Data = data;
-        }
-    }
-    
     public class LinkedList<T> : IEnumerable<T>
     {
         private int _count;

@@ -23,8 +23,13 @@ namespace p03_Interfaces
             Console.WriteLine(mylist.Contains("10"));
 
             mylist.Remove("4");
+            foreach (var s in mylist)
+            {
+                Console.WriteLine(s);
+            }
             Console.WriteLine(mylist.Contains("4"));
             mylist.Clear();
+            
             
             Console.ReadKey();
         }

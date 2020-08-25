@@ -1,0 +1,11 @@
+D:\IT\Programming\C#\CSharp_aLittleDeeper\p04_Linq\bin\Debug\netcoreapp3.1\p04_Linq.exe
+D:\IT\Programming\C#\CSharp_aLittleDeeper\p04_Linq\bin\Debug\netcoreapp3.1\p04_Linq.deps.json
+D:\IT\Programming\C#\CSharp_aLittleDeeper\p04_Linq\bin\Debug\netcoreapp3.1\p04_Linq.runtimeconfig.json
+D:\IT\Programming\C#\CSharp_aLittleDeeper\p04_Linq\bin\Debug\netcoreapp3.1\p04_Linq.runtimeconfig.dev.json
+D:\IT\Programming\C#\CSharp_aLittleDeeper\p04_Linq\bin\Debug\netcoreapp3.1\p04_Linq.dll
+D:\IT\Programming\C#\CSharp_aLittleDeeper\p04_Linq\bin\Debug\netcoreapp3.1\p04_Linq.pdb
+D:\IT\Programming\C#\CSharp_aLittleDeeper\p04_Linq\obj\Debug\netcoreapp3.1\p04_Linq.csprojAssemblyReference.cache
+D:\IT\Programming\C#\CSharp_aLittleDeeper\p04_Linq\obj\Debug\netcoreapp3.1\p04_Linq.AssemblyInfoInputs.cache
+D:\IT\Programming\C#\CSharp_aLittleDeeper\p04_Linq\obj\Debug\netcoreapp3.1\p04_Linq.AssemblyInfo.cs
+D:\IT\Programming\C#\CSharp_aLittleDeeper\p04_Linq\obj\Debug\netcoreapp3.1\p04_Linq.dll
+D:\IT\Programming\C#\CSharp_aLittleDeeper\p04_Linq\obj\Debug\netcoreapp3.1\p04_Linq.pdb
