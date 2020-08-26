@@ -31,12 +31,13 @@ namespace p04_Linq
                                   "[2] - show all account of user\n" +
                                   "[3] - show all account of user, include history for each accpunt\n" +
                                   "[4] - show refill operations and account owner\n" +
-                                  "[5] - show users with account sum more than:"
+                                  "[5] - show users with account sum more than:\n" +
+                                  "[0] - Exit"
                                   );
                 int key = 0;
                 int.TryParse(Console.ReadLine(), out key);
                 if (key == 0)
-                    continue;
+                    break;
                 switch (key)
                 {
                     case 1:
@@ -81,18 +82,19 @@ namespace p04_Linq
                         {
                             var accounts = from a in Accounts
                                             where a.UserId == user3.Id
-                                            from h in History
-                                            where h.AccountId == a.Id
+                                            join h in History on a.Id equals h.AccountId
                                             select new
                                             {
                                                 OpenDate = a.CreateDate,
                                                 Amount = a.Sum,
                                                 Owner = user3.FIO,
-                                                Operation = Enum.GetName(typeof(OperationType), h.OperationType)
+                                                Operation = Enum.GetName(typeof(OperationType), h.OperationType),
+                                                AccountId = a.Id,
+                                                HistoryAId = h.AccountId
                                             };
                             accounts.ToList().ForEach(a =>
                             {
-                                Console.WriteLine($"OpenDate: {a.OpenDate}, Amount: {a.Amount}, Owner: {a.Owner}, Operation: {a.Operation}");
+                                Console.WriteLine($"OpenDate: {a.OpenDate}, Amount: {a.Amount}, Owner: {a.Owner}, Operation: {a.Operation}, AccountId = {a.AccountId}, HAID={a.HistoryAId}");
                             });
                         }
                         else
@@ -103,21 +105,21 @@ namespace p04_Linq
                     case 4:
                         var withdrawals = from h in History
                                             where h.OperationType == OperationType.Refill
-                                            from a in Accounts
-                                            where a.Id == h.AccountId
-                                            from u in Users
-                                            where u.Id == a.UserId
+                                            join a in Accounts on h.AccountId equals a.Id
+                                            join u in Users on a.UserId equals u.Id
                                             select new
                                             {
                                                 AccountOwner = u.FIO,
                                                 AccountId = a.Id,
                                                 OperationDate = h.OperationDate,
                                                 operationSum = h.Sum,
-                                                opId = h.Id
+                                                opId = h.Id,
+                                                userId = u.Id
                                             };
                         withdrawals.ToList().ForEach(x =>
                         {
-                            Console.WriteLine($"Account owner: {x.AccountOwner}, operation sum: {x.operationSum}, opId: {x.opId}, AccountId: {x.AccountId}");
+                            Console.WriteLine($"Account owner: {x.AccountOwner}, operation sum: {x.operationSum}, opId: {x.opId}, AccountId: {x.AccountId} " +
+                                              $"userId: {x.userId}");
                         });
                         break;
                     case 5:
@@ -131,17 +133,17 @@ namespace p04_Linq
 
                         var users = from a in Accounts
                                         where a.Sum > result
-                                        from u in Users
-                                        where u.Id == a.Id
+                                        join u in Users on a.UserId equals u.Id
                                         select new
                                         {
                                             FIO = u.FIO,
                                             Amount = a.Sum,
-                                            AccountId = a.Id
+                                            AccountId = a.Id,
+                                            UserId = u.Id
                                         };
                         users.ToList().ForEach(x =>
                         {
-                            Console.WriteLine($"FIO: {x.FIO}, Amount: {x.Amount}, AccountId: {x.AccountId}");
+                            Console.WriteLine($"FIO: {x.FIO}, Amount: {x.Amount}, AccountId: {x.AccountId}, UserId: {x.UserId}");
                         });
                         break;
                 }
@@ -182,17 +184,17 @@ namespace p04_Linq
                 },
                 new User
                 {
-                    Id = 5, Firstname = "Роман", Lastname = "Лисицын", Patronymic = "Романович",
+                    Id = 6, Firstname = "Роман", Lastname = "Лисицын", Patronymic = "Романович",
                     Login = "lisicinrr", Password = "123", Phone = "9564462"
                 },
                 new User
                 {
-                    Id = 6, Firstname = "Сергей", Lastname = "Ким", Patronymic = "", Login = "kims",
+                    Id = 7, Firstname = "Сергей", Lastname = "Ким", Patronymic = "", Login = "kims",
                     Password = "123", Phone = "9564422"
                 },
                 new User
                 {
-                    Id = 7, Firstname = "Илья", Lastname = "Больших", Patronymic = "Дмитриевич",
+                    Id = 8, Firstname = "Илья", Lastname = "Больших", Patronymic = "Дмитриевич",
                     Login = "bolshihid", Password = "123", Phone = "9564431"
                 },
             };
@@ -208,7 +210,21 @@ namespace p04_Linq
                 new Account {Id = 4, Sum = 3200000, CreateDate = DateTime.Now, UserId = 3},
                 new Account {Id = 5, Sum = 7800000, CreateDate = DateTime.Now, UserId = 4},
                 new Account {Id = 6, Sum = 10000000, CreateDate = DateTime.Now, UserId = 7},
-                new Account {Id = 7, Sum = 10000, CreateDate = DateTime.Now, UserId = 6}
+                new Account {Id = 7, Sum = 100000000, CreateDate = DateTime.Now, UserId = 6},
+                new Account {Id = 8, Sum = 5000000, CreateDate = DateTime.Now, UserId = 8},
+                new Account {Id = 9, Sum = 190000, CreateDate = DateTime.Now, UserId = 2},
+                new Account {Id = 10, Sum = 90000, CreateDate = DateTime.Now, UserId = 6},
+                new Account {Id = 11, Sum = 5000, CreateDate = DateTime.Now, UserId = 3},
+                new Account {Id = 12, Sum = 100000, CreateDate = DateTime.Now, UserId = 7},
+                new Account {Id = 13, Sum = 6000, CreateDate = DateTime.Now, UserId = 1},
+                new Account {Id = 14, Sum = 7890000, CreateDate = DateTime.Now, UserId = 3},
+                new Account {Id = 15, Sum = 50000, CreateDate = DateTime.Now, UserId = 5},
+                new Account {Id = 16, Sum = 20000, CreateDate = DateTime.Now, UserId = 4},
+                new Account {Id = 17, Sum = 30000, CreateDate = DateTime.Now, UserId = 5},
+                new Account {Id = 18, Sum = 680000, CreateDate = DateTime.Now, UserId = 8},
+                new Account {Id = 19, Sum = 25000, CreateDate = DateTime.Now, UserId = 1},
+                new Account {Id = 20, Sum = 80000, CreateDate = DateTime.Now, UserId = 4},
+                new Account {Id = 21, Sum = 110000, CreateDate = DateTime.Now, UserId = 6},
             };
         }
         
@@ -221,36 +237,36 @@ namespace p04_Linq
                 new History{ Id = 3, OperationDate = DateTime.UtcNow, OperationType = OperationType.Withdrawal, AccountId = 5, Sum = 500},
                 new History{ Id = 4, OperationDate = DateTime.UtcNow, OperationType = OperationType.Refill, AccountId = 1, Sum = 7000},
                 new History{ Id = 5, OperationDate = DateTime.UtcNow, OperationType = OperationType.Withdrawal, AccountId = 2, Sum = 50500},
-                new History{ Id = 6, OperationDate = DateTime.UtcNow, OperationType = OperationType.Refill, AccountId = 2, Sum = 155000},
-                new History{ Id = 7, OperationDate = DateTime.UtcNow, OperationType = OperationType.Refill, AccountId = 3, Sum = 500000},
-                new History{ Id = 8, OperationDate = DateTime.UtcNow, OperationType = OperationType.Credit, AccountId = 3, Sum = 5000000},
-                new History{ Id = 9, OperationDate = DateTime.UtcNow, OperationType = OperationType.Withdrawal, AccountId = 6, Sum = 1005000},
-                new History{ Id = 10, OperationDate = DateTime.UtcNow, OperationType = OperationType.Refill, AccountId = 6, Sum = 55000},
-                new History{ Id = 11, OperationDate = DateTime.UtcNow, OperationType = OperationType.Refill, AccountId = 4, Sum = 50},
+                new History{ Id = 6, OperationDate = DateTime.UtcNow, OperationType = OperationType.Refill, AccountId = 21, Sum = 155000},
+                new History{ Id = 7, OperationDate = DateTime.UtcNow, OperationType = OperationType.Refill, AccountId = 13, Sum = 500000},
+                new History{ Id = 8, OperationDate = DateTime.UtcNow, OperationType = OperationType.Credit, AccountId = 14, Sum = 5000000},
+                new History{ Id = 9, OperationDate = DateTime.UtcNow, OperationType = OperationType.Withdrawal, AccountId = 16, Sum = 1005000},
+                new History{ Id = 10, OperationDate = DateTime.UtcNow, OperationType = OperationType.Refill, AccountId = 15, Sum = 55000},
+                new History{ Id = 11, OperationDate = DateTime.UtcNow, OperationType = OperationType.Refill, AccountId = 11, Sum = 50},
                 new History{ Id = 12, OperationDate = DateTime.UtcNow, OperationType = OperationType.Withdrawal, AccountId = 2, Sum = 51000},
                 new History{ Id = 13, OperationDate = DateTime.UtcNow, OperationType = OperationType.Refill, AccountId = 3, Sum = 5000},
                 new History{ Id = 14, OperationDate = DateTime.UtcNow, OperationType = OperationType.Refill, AccountId = 4, Sum = 10050},
                 new History{ Id = 15, OperationDate = DateTime.UtcNow, OperationType = OperationType.Refill, AccountId = 4, Sum = 33000},
-                new History{ Id = 16, OperationDate = DateTime.UtcNow, OperationType = OperationType.Withdrawal, AccountId = 2, Sum = 50200},
+                new History{ Id = 16, OperationDate = DateTime.UtcNow, OperationType = OperationType.Withdrawal, AccountId = 15, Sum = 50200},
                 new History{ Id = 17, OperationDate = DateTime.UtcNow, OperationType = OperationType.Refill, AccountId = 2, Sum = 10000},
                 new History{ Id = 18, OperationDate = DateTime.UtcNow, OperationType = OperationType.Credit, AccountId = 1, Sum = 12300},
                 new History{ Id = 19, OperationDate = DateTime.UtcNow, OperationType = OperationType.Refill, AccountId = 6, Sum = 1200},
-                new History{ Id = 20, OperationDate = DateTime.UtcNow, OperationType = OperationType.Withdrawal, AccountId = 2, Sum = 1000},
-                new History{ Id = 21, OperationDate = DateTime.UtcNow, OperationType = OperationType.Withdrawal, AccountId = 5, Sum = 85000},
+                new History{ Id = 20, OperationDate = DateTime.UtcNow, OperationType = OperationType.Withdrawal, AccountId = 21, Sum = 1000},
+                new History{ Id = 21, OperationDate = DateTime.UtcNow, OperationType = OperationType.Withdrawal, AccountId = 20, Sum = 85000},
                 new History{ Id = 22, OperationDate = DateTime.UtcNow, OperationType = OperationType.Withdrawal, AccountId = 2, Sum = 15000},
                 new History{ Id = 23, OperationDate = DateTime.UtcNow, OperationType = OperationType.Refill, AccountId = 5, Sum = 95000},
                 new History{ Id = 24, OperationDate = DateTime.UtcNow, OperationType = OperationType.Refill, AccountId = 2, Sum = 750000},
-                new History{ Id = 25, OperationDate = DateTime.UtcNow, OperationType = OperationType.Refill, AccountId = 5, Sum = 15000},
-                new History{ Id = 26, OperationDate = DateTime.UtcNow, OperationType = OperationType.Refill, AccountId = 5, Sum = 600},
-                new History{ Id = 28, OperationDate = DateTime.UtcNow, OperationType = OperationType.Withdrawal, AccountId = 7, Sum = 1000},
+                new History{ Id = 25, OperationDate = DateTime.UtcNow, OperationType = OperationType.Refill, AccountId = 18, Sum = 15000},
+                new History{ Id = 26, OperationDate = DateTime.UtcNow, OperationType = OperationType.Refill, AccountId = 19, Sum = 600},
+                new History{ Id = 28, OperationDate = DateTime.UtcNow, OperationType = OperationType.Withdrawal, AccountId = 17, Sum = 1000},
                 new History{ Id = 29, OperationDate = DateTime.UtcNow, OperationType = OperationType.Withdrawal, AccountId = 7, Sum = 5000},
                 new History{ Id = 30, OperationDate = DateTime.UtcNow, OperationType = OperationType.Withdrawal, AccountId = 2, Sum = 1000},
-                new History{ Id = 31, OperationDate = DateTime.UtcNow, OperationType = OperationType.Withdrawal, AccountId = 7, Sum = 7000},
+                new History{ Id = 31, OperationDate = DateTime.UtcNow, OperationType = OperationType.Withdrawal, AccountId = 12, Sum = 7000},
                 new History{ Id = 32, OperationDate = DateTime.UtcNow, OperationType = OperationType.Refill, AccountId = 5, Sum = 4000},
-                new History{ Id = 33, OperationDate = DateTime.UtcNow, OperationType = OperationType.Refill, AccountId = 7, Sum = 500000},
-                new History{ Id = 34, OperationDate = DateTime.UtcNow, OperationType = OperationType.Refill, AccountId = 7, Sum = 100000},
-                new History{ Id = 35, OperationDate = DateTime.UtcNow, OperationType = OperationType.Withdrawal, AccountId = 5, Sum = 4000},
-                new History{ Id = 36, OperationDate = DateTime.UtcNow, OperationType = OperationType.Withdrawal, AccountId = 6, Sum = 3000}
+                new History{ Id = 33, OperationDate = DateTime.UtcNow, OperationType = OperationType.Refill, AccountId = 11, Sum = 500000},
+                new History{ Id = 34, OperationDate = DateTime.UtcNow, OperationType = OperationType.Refill, AccountId = 10, Sum = 100000},
+                new History{ Id = 35, OperationDate = DateTime.UtcNow, OperationType = OperationType.Withdrawal, AccountId = 9, Sum = 4000},
+                new History{ Id = 36, OperationDate = DateTime.UtcNow, OperationType = OperationType.Withdrawal, AccountId = 8, Sum = 3000}
             };
         }
     }
