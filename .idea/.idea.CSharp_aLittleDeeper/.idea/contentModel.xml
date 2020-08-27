@@ -73,6 +73,7 @@
         <e p="p05_Strings.csproj" t="IncludeRecursive" />
         <e p="Program.cs" t="Include" />
         <e p="String_StringbuilderCompare.cs" t="Include" />
+        <e p="UrlParser.cs" t="Include" />
       </e>
       <e p="packages" t="ExcludeRecursive" />
     </e>

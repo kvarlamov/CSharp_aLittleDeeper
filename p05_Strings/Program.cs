@@ -7,8 +7,11 @@ namespace p05_Strings
     {
         static void Main(string[] args)
         {
-            String_StringbuilderCompare.StringCreator();
-            String_StringbuilderCompare.StringBuilderCreator();
+            // String_StringbuilderCompare.StringCreator();
+            // String_StringbuilderCompare.StringBuilderCreator();
+
+            string url = "https://yandex.ru/index.html";
+            url.Parse();
             Console.ReadKey();
         }
     }
