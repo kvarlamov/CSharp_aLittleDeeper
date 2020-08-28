@@ -10,7 +10,7 @@ namespace p05_Strings
             // String_StringbuilderCompare.StringCreator();
             // String_StringbuilderCompare.StringBuilderCreator();
 
-            string url = "https://yandex.ru/index.html";
+            string url = "https://oper.ru";
             url.Parse();
             Console.ReadKey();
         }
