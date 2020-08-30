@@ -9,7 +9,3 @@ Project list:
 
 ***
 This projects helps me keep in mind interesting tools of C#, maybe it help you too;)
-
-
-//TODO
-*Add indexator to first class
