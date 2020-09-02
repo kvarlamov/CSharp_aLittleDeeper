@@ -12,7 +12,6 @@ namespace p05_Strings
         {
             string pattern = "\"https?://\\S*\"";
             string siteHtml = null;
-            Match m;
             using (WebClient client = new WebClient())
             {
                 siteHtml = client.DownloadString(url);
@@ -26,13 +25,6 @@ namespace p05_Strings
                 {
                     Console.WriteLine(match.Value.Replace("\"",""));
                 }
-                // m = Regex.Match(siteHtml, pattern,
-                //                 RegexOptions.IgnoreCase | RegexOptions.Compiled, TimeSpan.FromSeconds(1));
-                // while (m.Success)
-                // {
-                //     Console.WriteLine($"Found url {m.Groups[1]} at {m.Groups[1].Index}");
-                //     m = m.NextMatch();
-                // }
             }
             catch (RegexMatchTimeoutException e)
             {
@@ -46,6 +38,18 @@ namespace p05_Strings
         public static void Parse(this string url)
         {
             UrlParser.ParseSite(url);
+        }
+    }
+
+    [AttributeUsage(AttributeTargets.All, Inherited = false, AllowMultiple = true)]
+    sealed class MyAttribute : Attribute
+    {
+        // See the attribute guidelines at 
+        //  http://go.microsoft.com/fwlink/?LinkId=85236
+        public MyAttribute()
+        {
+            // TODO: Implement code here
+            throw new NotImplementedException();
         }
     }
 }
