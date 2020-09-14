@@ -14,6 +14,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "p06_Reflection", "p06_Refle
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "p07_Attributes", "p07_Attributes\p07_Attributes.csproj", "{C91E7EE9-CECC-484E-AA1B-EE9182C45A4D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "p09_Delegates", "p09_Delegates\p09_Delegates.csproj", "{1150C3D5-E665-4E8A-B9C9-BC271AB5D42E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -48,5 +50,9 @@ Global
 		{C91E7EE9-CECC-484E-AA1B-EE9182C45A4D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C91E7EE9-CECC-484E-AA1B-EE9182C45A4D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C91E7EE9-CECC-484E-AA1B-EE9182C45A4D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1150C3D5-E665-4E8A-B9C9-BC271AB5D42E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1150C3D5-E665-4E8A-B9C9-BC271AB5D42E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1150C3D5-E665-4E8A-B9C9-BC271AB5D42E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1150C3D5-E665-4E8A-B9C9-BC271AB5D42E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

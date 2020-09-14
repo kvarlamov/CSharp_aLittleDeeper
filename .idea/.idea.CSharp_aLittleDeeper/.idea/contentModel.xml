@@ -99,6 +99,18 @@
         <e p="p07_Attributes.csproj" t="IncludeRecursive" />
         <e p="Program.cs" t="Include" />
       </e>
+      <e p="p09_Delegates" t="IncludeRecursive">
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="obj" t="ExcludeRecursive">
+          <e p="Debug" t="Include">
+            <e p="netcoreapp3.0" t="Include">
+              <e p="p09_Delegates.AssemblyInfo.cs" t="Include" />
+            </e>
+          </e>
+        </e>
+        <e p="p09_Delegates.csproj" t="IncludeRecursive" />
+        <e p="Program.cs" t="Include" />
+      </e>
       <e p="packages" t="ExcludeRecursive" />
     </e>
   </component>
