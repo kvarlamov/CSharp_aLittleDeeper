@@ -111,6 +111,66 @@
         <e p="p09_Delegates.csproj" t="IncludeRecursive" />
         <e p="Program.cs" t="Include" />
       </e>
+      <e p="p10_DbMain" t="IncludeRecursive">
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="obj" t="ExcludeRecursive">
+          <e p="Debug" t="Include">
+            <e p="netcoreapp3.0" t="Include">
+              <e p="p10_DbMain.AssemblyInfo.cs" t="Include" />
+            </e>
+          </e>
+        </e>
+        <e p="p10_DbMain.csproj" t="IncludeRecursive" />
+        <e p="Program.cs" t="Include" />
+      </e>
+      <e p="p10_DotNetDbTools" t="IncludeRecursive">
+        <e p="ApplicationContext.cs" t="Include" />
+        <e p="appsettings.json" t="Include" />
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="Category.cs" t="Include" />
+        <e p="City.cs" t="Include" />
+        <e p="CityToCategory.cs" t="Include" />
+        <e p="Deal.cs" t="Include" />
+        <e p="Helper.cs" t="Include" />
+        <e p="IDatabase.cs" t="Include" />
+        <e p="obj" t="ExcludeRecursive">
+          <e p="Debug" t="Include">
+            <e p="netcoreapp3.0" t="Include">
+              <e p="p10_DotNetDbTools.AssemblyInfo.cs" t="Include" />
+            </e>
+          </e>
+        </e>
+        <e p="p10_DotNetDbTools.csproj" t="IncludeRecursive" />
+        <e p="Product.cs" t="Include" />
+        <e p="Repository.cs" t="Include" />
+        <e p="User.cs" t="Include" />
+      </e>
+      <e p="p10_EFdll" t="IncludeRecursive">
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="EntityFrameworkDll.cs" t="Include" />
+        <e p="obj" t="ExcludeRecursive">
+          <e p="Debug" t="Include">
+            <e p="netcoreapp3.0" t="Include">
+              <e p="p10_EFdll.AssemblyInfo.cs" t="Include" />
+            </e>
+          </e>
+        </e>
+        <e p="p10_EFdll.csproj" t="IncludeRecursive" />
+      </e>
+      <e p="p11_DesighnPatterns" t="IncludeRecursive">
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="obj" t="ExcludeRecursive">
+          <e p="Debug" t="Include">
+            <e p="netcoreapp3.0" t="Include">
+              <e p="p11_DesighnPatterns.AssemblyInfo.cs" t="Include" />
+            </e>
+          </e>
+        </e>
+        <e p="p11_DesighnPatterns.csproj" t="IncludeRecursive" />
+        <e p="Program.cs" t="Include" />
+        <e p="PrototypeExample.cs" t="Include" />
+        <e p="SingletonExample.cs" t="Include" />
+      </e>
       <e p="packages" t="ExcludeRecursive" />
     </e>
   </component>

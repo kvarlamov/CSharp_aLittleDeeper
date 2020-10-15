@@ -1,0 +1,13 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <OutputType>Exe</OutputType>
+        <TargetFramework>netcoreapp3.0</TargetFramework>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\p10_DotNetDbTools\p10_DotNetDbTools.csproj" />
+      <ProjectReference Include="..\p10_EFdll\p10_EFdll.csproj" />
+    </ItemGroup>
+
+</Project>
