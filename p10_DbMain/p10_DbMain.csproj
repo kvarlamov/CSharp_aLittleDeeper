@@ -6,6 +6,7 @@
     </PropertyGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\p10_AdoNetDll\p10_AdoNetDll.csproj" />
       <ProjectReference Include="..\p10_DotNetDbTools\p10_DotNetDbTools.csproj" />
       <ProjectReference Include="..\p10_EFdll\p10_EFdll.csproj" />
     </ItemGroup>

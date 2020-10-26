@@ -24,6 +24,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "p10_EFdll", "p10_EFdll\p10_
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "p10_DbMain", "p10_DbMain\p10_DbMain.csproj", "{60AC4258-6AF7-4427-96CB-CB4535518CF2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "p10_AdoNetDll", "p10_AdoNetDll\p10_AdoNetDll.csproj", "{1A3641EB-DCE0-43B8-9659-6FD563C6DE06}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "p12_MultiThreading", "p12_MultiThreading\p12_MultiThreading.csproj", "{4F0A9698-6394-4EE5-A96F-71D374D90F80}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -78,5 +82,13 @@ Global
 		{60AC4258-6AF7-4427-96CB-CB4535518CF2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{60AC4258-6AF7-4427-96CB-CB4535518CF2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{60AC4258-6AF7-4427-96CB-CB4535518CF2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1A3641EB-DCE0-43B8-9659-6FD563C6DE06}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1A3641EB-DCE0-43B8-9659-6FD563C6DE06}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1A3641EB-DCE0-43B8-9659-6FD563C6DE06}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1A3641EB-DCE0-43B8-9659-6FD563C6DE06}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4F0A9698-6394-4EE5-A96F-71D374D90F80}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4F0A9698-6394-4EE5-A96F-71D374D90F80}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4F0A9698-6394-4EE5-A96F-71D374D90F80}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4F0A9698-6394-4EE5-A96F-71D374D90F80}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
