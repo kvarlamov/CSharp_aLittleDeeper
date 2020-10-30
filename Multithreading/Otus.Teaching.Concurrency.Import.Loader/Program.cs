@@ -135,9 +135,11 @@ namespace Otus.Teaching.Concurrency.Import.Loader
             //    customers.ForEach(c => _repository.AddCustomer(c));
             //}
 
-            wh.WaitOne();
+            //wh.WaitOne();
+            //customers.ForEach(c => _repository.AddCustomer(c));
+            //wh.Set();
+
             customers.ForEach(c => _repository.AddCustomer(c));
-            wh.Set();
 
             //while (true)
             //{
