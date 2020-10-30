@@ -19,19 +19,18 @@ namespace Otus.Teaching.Concurrency.Import.Loader
     class Program
     {
         private static string _dataFilePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "customers.xml");
-        private static readonly int _numberOfNodes = 500000;
+        private static readonly int _numberOfNodes = 1000000;
         private static XDocument _doc;
         private static readonly int _numOfThreads = 4;
         private static readonly int _step = _numberOfNodes / _numOfThreads;
-        private static bool _isFirstCustomer = true;
         private static int _currentMax;
-        private static EventWaitHandle wh = new AutoResetEvent(false);
+        private static EventWaitHandle wh = new AutoResetEvent(true);
+        private static object _locker = new object();
         private static CustomerRepository _repository = new CustomerRepository();
-        
+        static Barrier barrier = new Barrier(4);
+
         static void Main(string[] args)
-        {
-            Stopwatch sw  = new Stopwatch();
-            sw.Start();
+        {            
             //TODO: move all hardcode to config!!!
             if (args != null && args.Length == 1)
             {
@@ -47,29 +46,44 @@ namespace Otus.Teaching.Concurrency.Import.Loader
             var loader = new DataLoader(@"D:\IT\Programming\C#\CSharp_aLittleDeeper\Multithreading\Otus.Teaching.Concurrency.Import.Loader\bin\Debug\netcoreapp3.1\customers.xml");
 
             _doc = loader.LoadData();
-            SelectNodesSingleThread();
-            //TODO: set number of threads in config - now 4
 
-            //int leftBorder = 0;
-            //Thread[] threads = new Thread[_numOfThreads];
-            //for (byte i = 0; i < _numOfThreads; i++)
-            //{
-            //    threads[i] = new Thread(new ParameterizedThreadStart(SelectNodesFromXmlAndSendToParser));
-            //    threads[i].Start(leftBorder);
-            //    leftBorder += _step;
-            //}
+            DoWorkSingleThread();
+            DoWorkMulthiThread();
 
-            //for (int i = 0; i < _numOfThreads; i++)
-            //{
-            //    threads[i].Join();
-            //}
-
-
-
-            sw.Stop();
-            Console.WriteLine($"\n***Всего потрачено секунд: {sw.ElapsedMilliseconds / 1000},{sw.ElapsedMilliseconds % 1000}");
-
+            Console.WriteLine("Press any key to end");
             Console.ReadKey();
+        }
+
+        static void DoWorkSingleThread()
+        {
+            Stopwatch sw = new Stopwatch();
+            sw.Start();
+            SelectNodesSingleThread();
+            sw.Stop();
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.WriteLine($"\n***Работа в одном потоке***\n***Всего потрачено секунд: {sw.ElapsedMilliseconds / 1000},{sw.ElapsedMilliseconds % 1000}");
+        }
+
+        static void DoWorkMulthiThread()
+        {
+            Stopwatch sw = new Stopwatch();
+            sw.Start();
+            int leftBorder = 0;
+            Thread[] threads = new Thread[_numOfThreads];
+            for (byte i = 0; i < _numOfThreads; i++)
+            {
+                threads[i] = new Thread(new ParameterizedThreadStart(SelectNodesFromXmlAndSendToParser));
+                threads[i].Start(leftBorder);
+                leftBorder += _step;
+            }
+
+            for (int i = 0; i < _numOfThreads; i++)
+            {
+                threads[i].Join();
+            }
+            sw.Stop();
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.WriteLine($"\n***Работа в {_numOfThreads} потоках***\n***Всего потрачено секунд: {sw.ElapsedMilliseconds / 1000},{sw.ElapsedMilliseconds % 1000}");
         }
 
         static void GenerateCustomersDataFile()
@@ -87,7 +101,8 @@ namespace Otus.Teaching.Concurrency.Import.Loader
 
         static void FeedDatabaseSingleThread(List<Customer> customers)
         {
-            customers.ForEach(c => _repository.AddCustomer(c));
+            CustomerRepository repository = new CustomerRepository();
+            customers.ForEach(c => repository.AddCustomer(c));
         }
 
         static void SelectNodesFromXmlAndSendToParser(object leftBorder)
@@ -107,32 +122,43 @@ namespace Otus.Teaching.Concurrency.Import.Loader
             }
             
             XmlParser parser = new XmlParser { Items = nodes};
-            FeedDatabase(parser.Parse());
-            wh.Set();
+            var parsingData = parser.Parse();
+            //barrier.SignalAndWait();
+            FeedDatabase(parsingData);
+            //wh.Set();
         }
 
         static void FeedDatabase(List<Customer> customers)
         {
-            while (true)
-            {
-                if (customers[0].Id == 1)
-                {
-                    customers.ForEach(c => _repository.AddCustomer(c));
-                    //Thread.Sleep(300);//Imitation of lont time work
-                    _currentMax = customers.Last().Id;
-                    return;
-                }
+            //lock (_locker)
+            //{
+            //    customers.ForEach(c => _repository.AddCustomer(c));
+            //}
 
-                if (customers[0].Id - 1 == _currentMax)
-                {
-                    customers.ForEach(c => _repository.AddCustomer(c));
-                    //Thread.Sleep(300);//Imitation of lont time work
-                    _currentMax = customers.Last().Id;
-                    return;
-                }
-                
-                wh.WaitOne();
-            }
+            wh.WaitOne();
+            customers.ForEach(c => _repository.AddCustomer(c));
+            wh.Set();
+
+            //while (true)
+            //{
+            //if (customers[0].Id == 1)
+            //{
+            //    customers.ForEach(c => _repository.AddCustomer(c));
+            //    Thread.Sleep(300);//Imitation of lont time work
+            //    _currentMax = customers.Last().Id;
+            //    return;
+            //}
+
+            //if (customers[0].Id - 1 == _currentMax)
+            //{
+            //    customers.ForEach(c => _repository.AddCustomer(c));
+            //    //Thread.Sleep(300);//Imitation of lont time work
+            //    _currentMax = customers.Last().Id;
+            //    return;
+            //}
+
+            //wh.WaitOne();
+            //}
         }
     }
 }

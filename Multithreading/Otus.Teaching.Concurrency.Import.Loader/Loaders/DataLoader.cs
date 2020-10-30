@@ -1,3 +1,4 @@
+using System;
 using System.Xml.Linq;
 
 namespace Otus.Teaching.Concurrency.Import.Core.Loaders
@@ -14,12 +15,10 @@ namespace Otus.Teaching.Concurrency.Import.Core.Loaders
 
         public XDocument LoadData()
         {
-            //Console.WriteLine("Loading data...");
-            //Thread.Sleep(2000);
-            //Console.WriteLine("Loaded data...");
-            //Console.WriteLine("\n**Start parsing");
-
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.WriteLine("Loading data...");            
             XDocument doc = XDocument.Load(_filepath);
+            Console.WriteLine("Data loaded!");
             return doc;
         }
     }

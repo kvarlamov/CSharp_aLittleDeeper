@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Xml.Serialization;
@@ -20,12 +21,15 @@ namespace Otus.Teaching.Concurrency.Import.DataGenerator.Generators
         
         public void Generate()
         {
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine("File-Generating started");
             var customers = RandomCustomerGenerator.Generate(_dataCount);
             using var stream = File.Create(_fileName);
             new XmlSerializer(typeof(CustomersList)).Serialize(stream, new CustomersList()
             {
                 Customers = customers
             });
+            Console.WriteLine("File-Generating finished");
         }
     }
 }

@@ -1,6 +1,8 @@
 ﻿using System.Collections.Generic;
+using System;
 using System.IO;
 using System.Linq;
+using System.Threading;
 using System.Xml.Linq;
 using System.Xml.Serialization;
 using Otus.Teaching.Concurrency.Import.Core.Parsers;
@@ -12,15 +14,20 @@ namespace Otus.Teaching.Concurrency.Import.DataAccess.Parsers
     public class XmlParser
         : IDataParser<List<Customer>>
     {
+        static XmlParser()
+        {
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine("Start parsing");
+        }
         public IEnumerable<XElement> Items { get; set; }
         public List<Customer> Parse()
         {
             List<Customer> customers = new List<Customer>();
             XmlSerializer serializer = new XmlSerializer(typeof(Customer));
             foreach (var item in Items)
-            {
+            {                
                 customers.Add((Customer)serializer.Deserialize(item.CreateReader()));
-            }
+            }            
             
             return customers.OrderBy(c => c.Id).ToList();
         }
