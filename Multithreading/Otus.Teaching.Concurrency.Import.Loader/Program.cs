@@ -28,22 +28,35 @@ namespace Otus.Teaching.Concurrency.Import.Loader
         private static object _locker = new object();
         private static CustomerRepository _repository = new CustomerRepository();
         static Barrier barrier = new Barrier(4);
+        private static readonly string _path = @"D:\IT\Programming\C#\CSharp_aLittleDeeper\Multithreading\Otus.Teaching.Concurrency.Import.DataGenerator.App\bin\Debug\netcoreapp3.1\Otus.Teaching.Concurrency.Import.DataGenerator.App.exe";
 
         static void Main(string[] args)
         {            
             //TODO: move all hardcode to config!!!
             if (args != null && args.Length == 1)
             {
-                _dataFilePath = args[0];
-                Process.Start(@"D:\IT\Programming\C#\CSharp_aLittleDeeper\Multithreading\Otus.Teaching.Concurrency.Import.DataGenerator.App\bin\Debug\netcoreapp3.1\Otus.Teaching.Concurrency.Import.DataGenerator.App.exe", "customers");
+                //_dataFilePath = args[0];
+                using (var process = new Process())
+                {
+                    process.StartInfo.FileName = _path;
+                    process.StartInfo.Arguments = "customers";
+                    process.Exited += Process_Exited;
+                    process.Start();
+                }
             }
             else
             {
                 Console.WriteLine($"Loader started with process Id {Process.GetCurrentProcess().Id}...");
                 GenerateCustomersDataFile();
+                DoWork();
             }
+            
+            Console.ReadKey();
+        }
 
-            var loader = new DataLoader(@"D:\IT\Programming\C#\CSharp_aLittleDeeper\Multithreading\Otus.Teaching.Concurrency.Import.Loader\bin\Debug\netcoreapp3.1\customers.xml");
+        private static void DoWork()
+        {
+            var loader = new DataLoader(_path + @"\customers.xml");
 
             _doc = loader.LoadData();
 
@@ -51,7 +64,11 @@ namespace Otus.Teaching.Concurrency.Import.Loader
             DoWorkMulthiThread();
 
             Console.WriteLine("Press any key to end");
-            Console.ReadKey();
+        }
+
+        private static void Process_Exited(object sender, EventArgs e)
+        {
+            DoWork();
         }
 
         static void DoWorkSingleThread()
@@ -130,16 +147,16 @@ namespace Otus.Teaching.Concurrency.Import.Loader
 
         static void FeedDatabase(List<Customer> customers)
         {
-            //lock (_locker)
-            //{
-            //    customers.ForEach(c => _repository.AddCustomer(c));
-            //}
+            lock (_locker)
+            {
+                customers.ForEach(c => _repository.AddCustomer(c));
+            }
 
             //wh.WaitOne();
             //customers.ForEach(c => _repository.AddCustomer(c));
             //wh.Set();
 
-            customers.ForEach(c => _repository.AddCustomer(c));
+            //customers.ForEach(c => _repository.AddCustomer(c));
 
             //while (true)
             //{
