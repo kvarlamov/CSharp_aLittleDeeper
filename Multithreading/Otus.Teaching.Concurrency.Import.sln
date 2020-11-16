@@ -1,14 +1,21 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Otus.Teaching.Concurrency.Import.Loader", "Otus.Teaching.Concurrency.Import.Loader\Otus.Teaching.Concurrency.Import.Loader.csproj", "{FB35FE31-CBE7-455E-A965-ABF0E9957110}"
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29806.167
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Otus.Teaching.Concurrency.Import.Loader", "Otus.Teaching.Concurrency.Import.Loader\Otus.Teaching.Concurrency.Import.Loader.csproj", "{FB35FE31-CBE7-455E-A965-ABF0E9957110}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Otus.Teaching.Concurrency.Import.DataAccess", "Otus.Teaching.Concurrency.Import.DataAccess\Otus.Teaching.Concurrency.Import.DataAccess.csproj", "{F355A3DF-6760-403E-BB2E-889FD6957F3C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Otus.Teaching.Concurrency.Import.DataAccess", "Otus.Teaching.Concurrency.Import.DataAccess\Otus.Teaching.Concurrency.Import.DataAccess.csproj", "{F355A3DF-6760-403E-BB2E-889FD6957F3C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Otus.Teaching.Concurrency.Import.Core", "Otus.Teaching.Concurrency.Import.Core\Otus.Teaching.Concurrency.Import.Core.csproj", "{C7A060E6-C607-40A6-A099-107BB53085B0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Otus.Teaching.Concurrency.Import.Core", "Otus.Teaching.Concurrency.Import.Core\Otus.Teaching.Concurrency.Import.Core.csproj", "{C7A060E6-C607-40A6-A099-107BB53085B0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Otus.Teaching.Concurrency.Import.DataGenerator.App", "Otus.Teaching.Concurrency.Import.DataGenerator.App\Otus.Teaching.Concurrency.Import.DataGenerator.App.csproj", "{C71DC579-5917-4FA2-A75E-95CE1D58B471}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Otus.Teaching.Concurrency.Import.DataGenerator.App", "Otus.Teaching.Concurrency.Import.DataGenerator.App\Otus.Teaching.Concurrency.Import.DataGenerator.App.csproj", "{C71DC579-5917-4FA2-A75E-95CE1D58B471}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Otus.Teaching.Concurrency.Import.DataGenerator", "Otus.Teaching.Concurrency.Import.DataGenerator\Otus.Teaching.Concurrency.Import.DataGenerator.csproj", "{BBB4B899-2C17-477D-8C0D-BC057DDAFAD2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Otus.Teaching.Concurrency.Import.DataGenerator", "Otus.Teaching.Concurrency.Import.DataGenerator\Otus.Teaching.Concurrency.Import.DataGenerator.csproj", "{BBB4B899-2C17-477D-8C0D-BC057DDAFAD2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApi", "WebApi\WebApi.csproj", "{064253DA-D4E6-4B5F-9376-ECB2C3D7B553}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApiClient", "WebApiClient\WebApiClient.csproj", "{1CEE6F13-E3C1-4189-B603-2AF276FE15BE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -36,7 +43,19 @@ Global
 		{BBB4B899-2C17-477D-8C0D-BC057DDAFAD2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BBB4B899-2C17-477D-8C0D-BC057DDAFAD2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BBB4B899-2C17-477D-8C0D-BC057DDAFAD2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{064253DA-D4E6-4B5F-9376-ECB2C3D7B553}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{064253DA-D4E6-4B5F-9376-ECB2C3D7B553}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{064253DA-D4E6-4B5F-9376-ECB2C3D7B553}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{064253DA-D4E6-4B5F-9376-ECB2C3D7B553}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1CEE6F13-E3C1-4189-B603-2AF276FE15BE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1CEE6F13-E3C1-4189-B603-2AF276FE15BE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1CEE6F13-E3C1-4189-B603-2AF276FE15BE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1CEE6F13-E3C1-4189-B603-2AF276FE15BE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
-	GlobalSection(NestedProjects) = preSolution
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {EA7F7B03-1664-4755-B8BE-DBB672E6B20C}
 	EndGlobalSection
 EndGlobal
