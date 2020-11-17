@@ -4,6 +4,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using WebApi.Models;
 
 namespace WebApi.Controllers
@@ -49,7 +51,7 @@ namespace WebApi.Controllers
         {
             if (user == null)
             {
-                return BadRequest();
+                return BadRequest("Invalid json. Can't create user");
             }
 
             db.Users.Add(user);
