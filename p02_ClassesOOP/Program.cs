@@ -7,10 +7,11 @@ namespace p02_ClassesOOP
     {
         static void Main(string[] args)
         {
-            PolimorphismExample1.Show();
-            ConstructorOrderExample.Show();
-            PolimorphismExample2.Show();
-            PolimorphismExample3.Show();
+            MoneyBox.Listen();
+            //PolimorphismExample1.Show();
+            //ConstructorOrderExample.Show();
+            //PolimorphismExample2.Show();
+            //PolimorphismExample3.Show();
             Console.ReadKey();
         }
     }
