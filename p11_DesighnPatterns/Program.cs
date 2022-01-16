@@ -1,4 +1,5 @@
 ﻿using System;
+using p11_DesighnPatterns.Structural;
 
 namespace p11_DesighnPatterns
 {
@@ -6,7 +7,31 @@ namespace p11_DesighnPatterns
     {
         static void Main(string[] args)
         {
-            SingletonExample.TestSingleton();
+
+            #region creational
+
+            //SingletonExample.TestSingleton();
+            //BuilderEx.TestBuilder();
+            // BuilderSingletonEx.Test();
+            // FactoryMethodEx.Test();
+            //AbstractFactoryEx.Test();
+
+            #endregion
+
+            #region structural
+
+            //ProxyEx.Test();
+            //Adapter.Test();
+            FacadeEx.Test();
+
+            #endregion
+
+            #region behavioral
+
+            
+
+            #endregion
+            
         }
     }
 }

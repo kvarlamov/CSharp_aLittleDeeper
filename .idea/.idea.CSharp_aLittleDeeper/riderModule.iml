@@ -2,6 +2,14 @@
 <module type="RIDER_MODULE" version="4">
   <component name="NewModuleRootManager">
     <content url="file://$MODULE_DIR$/../.." />
+    <content url="file://$USER_HOME$/.nuget/packages/mongodb.driver.core/2.14.1/contentFiles/any/netstandard2.1/Core" />
+    <content url="file://$USER_HOME$/.nuget/packages/mongodb.driver.core/2.14.1/runtimes/linux/native/libsnappy64.so" />
+    <content url="file://$USER_HOME$/.nuget/packages/mongodb.driver.core/2.14.1/runtimes/linux/native/libzstd.so" />
+    <content url="file://$USER_HOME$/.nuget/packages/mongodb.driver.core/2.14.1/runtimes/osx/native/libsnappy64.dylib" />
+    <content url="file://$USER_HOME$/.nuget/packages/mongodb.driver.core/2.14.1/runtimes/osx/native/libzstd.dylib" />
+    <content url="file://$USER_HOME$/.nuget/packages/mongodb.driver.core/2.14.1/runtimes/win/native/libzstd.dll" />
+    <content url="file://$USER_HOME$/.nuget/packages/mongodb.driver.core/2.14.1/runtimes/win/native/snappy32.dll" />
+    <content url="file://$USER_HOME$/.nuget/packages/mongodb.driver.core/2.14.1/runtimes/win/native/snappy64.dll" />
     <orderEntry type="sourceFolder" forTests="false" />
   </component>
 </module>
