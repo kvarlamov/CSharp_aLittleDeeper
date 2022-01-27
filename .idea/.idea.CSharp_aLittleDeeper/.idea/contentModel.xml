@@ -227,6 +227,7 @@
         <e p="Program.cs" t="Include" />
         <e p="Structural" t="Include">
           <e p="Adapter.cs" t="Include" />
+          <e p="ChainOfResponsibility.cs" t="Include" />
           <e p="FacadeEx.cs" t="Include" />
           <e p="ProxyEx.cs" t="Include" />
         </e>
