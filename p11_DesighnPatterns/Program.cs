@@ -1,4 +1,5 @@
 ﻿using System;
+using p11_DesighnPatterns.Behavioral;
 using p11_DesighnPatterns.Structural;
 
 namespace p11_DesighnPatterns
@@ -22,13 +23,13 @@ namespace p11_DesighnPatterns
 
             //ProxyEx.Test();
             //Adapter.Test();
-            FacadeEx.Test();
+            //FacadeEx.Test();
 
             #endregion
 
             #region behavioral
 
-            
+            StrategyEx.Test();
 
             #endregion
             
