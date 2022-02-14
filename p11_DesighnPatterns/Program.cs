@@ -29,7 +29,8 @@ namespace p11_DesighnPatterns
 
             #region behavioral
 
-            StrategyEx.Test();
+            //StrategyEx.Test();
+            TemplateMethodEx.Test();
 
             #endregion
             
