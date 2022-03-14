@@ -7,19 +7,16 @@ namespace p02_ClassesOOP
     {
         static void Main(string[] args)
         {
-<<<<<<< HEAD
+
             MoneyBox.Listen();
             //PolimorphismExample1.Show();
             //ConstructorOrderExample.Show();
             //PolimorphismExample2.Show();
             //PolimorphismExample3.Show();
-=======
             PolimorphismExample1.Show();
             ConstructorOrderExample.Show();
             PolimorphismExample2.Show();
             PolimorphismExample3.Show();
-            
->>>>>>> 3c7f0cc (Desighn Patterns. Creational & Structural)
             Console.ReadKey();
         }
     }

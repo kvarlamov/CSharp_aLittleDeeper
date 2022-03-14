@@ -30,7 +30,8 @@ namespace p11_DesighnPatterns
             #region behavioral
 
             //StrategyEx.Test();
-            TemplateMethodEx.Test();
+            // TemplateMethodEx.Test();
+            MediatorEx.Start();
 
             #endregion
             
