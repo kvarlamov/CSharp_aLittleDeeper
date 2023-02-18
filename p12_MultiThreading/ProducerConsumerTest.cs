@@ -33,7 +33,7 @@ namespace p12_MultiThreading
     public class ProducerConsumerTest<T> : IDisposable where T: class
     {
         public const int MembersToPass = 15;
-        public EventWaitHandle _WaitHandle = new AutoResetEvent(false);//public handle - pass only const members to queue
+        public EventWaitHandle _WaitHandle = new AutoResetEvent(false); //public handle - pass only const members to queue
         private EventWaitHandle _wh = new AutoResetEvent(false);
         private Task _workerTask;
         private Queue<T> _tasksQueue = new Queue<T>();
