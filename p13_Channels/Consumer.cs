@@ -2,33 +2,23 @@
 
 namespace p13_Channels;
 
-public class Consumer<T> where T: class
+public class Consumer
 {
-    private readonly ChannelReader<T> _reader;
+    private readonly ChannelReader<Envelope> _reader;
 
-    public Consumer(ChannelReader<T> reader)
+    public Consumer(ChannelReader<Envelope> reader)
     {
         _reader = reader;
     }
 
     public async ValueTask Read()
     {
-        try
+        while (true)
         {
-            while (true)
+            await foreach (var data in _reader.ReadAllAsync())
             {
-                await foreach (var msg in _reader.ReadAllAsync())
-                {
-                    if (typeof(T) != typeof(string))
-                        throw new NotImplementedException();
-            
-                    Console.WriteLine($"your message: {msg}");
-                }
+                Console.WriteLine($"your message: {data.Data}");
             }
-        }
-        catch (ChannelClosedException)
-        {
-            Console.WriteLine("Channel was closed");
         }
     }
 }

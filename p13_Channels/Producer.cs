@@ -2,11 +2,11 @@
 
 namespace p13_Channels;
 
-public class Producer<T> where T : class
+public class Producer
 {
-    private readonly ChannelWriter<T> _writer;
+    private readonly ChannelWriter<Envelope> _writer;
 
-    public Producer(ChannelWriter<T> writer)
+    public Producer(ChannelWriter<Envelope> writer)
     {
         _writer = writer;
     }
@@ -17,13 +17,10 @@ public class Producer<T> where T : class
         {
             Console.WriteLine("Insert message");
             var msg = Console.ReadLine();
-            if (typeof(T) != typeof(string))
-                throw new NotImplementedException();
             
-            if (msg is T converted) 
-                await _writer.WriteAsync(converted);
+            await _writer.WriteAsync(new Envelope(msg));
 
-            Task.Delay(500);
+            Thread.Sleep(500);
         }
     }
 }
