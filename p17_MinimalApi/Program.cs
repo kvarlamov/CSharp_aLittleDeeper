@@ -11,16 +11,17 @@ var app = builder.Build();
 app.UseSwagger();
 app.UseSwaggerUI();
 
+var todoitems = app.MapGroup("/todoitems");
 
 // we can inject in lambda params in minimum api
-app.MapGet("/todoitems", async (TodoDb db) => await db.Todos.ToListAsync());
-app.MapGet("/todoitems/completed", async (TodoDb db) => await db.Todos.Where(t => t.IsComplete).ToListAsync());
-app.MapGet("/todoitems/{id}", async (int id, TodoDb db) => await db.Todos.FindAsync(id)
+todoitems.MapGet("/todoitems", async (TodoDb db) => await db.Todos.ToListAsync());
+todoitems.MapGet("/todoitems/completed", async (TodoDb db) => await db.Todos.Where(t => t.IsComplete).ToListAsync());
+todoitems.MapGet("/todoitems/{id}", async (int id, TodoDb db) => await db.Todos.FindAsync(id)
     is Todo todo
     ? Results.Ok(todo)
     : Results.NotFound());
 
-app.MapPost("/todoitems", async (Todo todo, TodoDb db) =>
+todoitems.MapPost("/todoitems", async (Todo todo, TodoDb db) =>
 {
     db.Todos.Add(todo);
     await db.SaveChangesAsync();
@@ -28,7 +29,7 @@ app.MapPost("/todoitems", async (Todo todo, TodoDb db) =>
     return Results.Created($"/todoitems/{todo.Id}", todo);
 });
 
-app.MapPut("/todoitems/{id}", async (int id, Todo inputTodo, TodoDb db) =>
+todoitems.MapPut("/todoitems/{id}", async (int id, Todo inputTodo, TodoDb db) =>
 {
     var existingTodo = await db.Todos.FindAsync(id);
     if (existingTodo is null)
@@ -42,7 +43,7 @@ app.MapPut("/todoitems/{id}", async (int id, Todo inputTodo, TodoDb db) =>
     return Results.NoContent();
 });
 
-app.MapDelete("/todoitems/{id}", async (int id, TodoDb db) =>
+todoitems.MapDelete("/todoitems/{id}", async (int id, TodoDb db) =>
 {
     if (await db.Todos.FindAsync(id) is Todo todo)
     {
