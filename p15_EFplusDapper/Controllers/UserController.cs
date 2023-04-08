@@ -21,6 +21,12 @@ public class UserController : Controller
         return await _userRepository.GetAll();
     }
 
+    [HttpGet("Test")]
+    public string GetTest()
+    {
+        return "GetTest()";
+    }
+
     [HttpGet("{id:long}", Name = "GetById")]
     public async Task<User> GetUserById(long id)
     {

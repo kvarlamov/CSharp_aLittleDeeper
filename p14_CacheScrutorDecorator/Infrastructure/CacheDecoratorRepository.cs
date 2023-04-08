@@ -15,7 +15,8 @@ public class CacheDecoratorRepository : IRepository
     {
         _repository = repository;
         _cache = cache;
-        _cacheOptions = new MemoryCacheEntryOptions().SetAbsoluteExpiration(TimeSpan.FromSeconds(ExpirationSeconds));
+        _cacheOptions = new MemoryCacheEntryOptions()
+            .SetSlidingExpiration(TimeSpan.FromSeconds(ExpirationSeconds));
     }
     
     public Item? GetItem(int? id)

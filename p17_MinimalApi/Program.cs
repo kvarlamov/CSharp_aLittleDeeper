@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.EntityFrameworkCore;
 using p17_MinimalApi;
 
@@ -11,6 +12,8 @@ var app = builder.Build();
 app.UseSwagger();
 app.UseSwaggerUI();
 
+//todo - add unit tests, error handling
+//todo https://learn.microsoft.com/en-us/aspnet/core/tutorials/min-web-api?view=aspnetcore-7.0&tabs=visual-studio#prevent-over-posting
 var todoitems = app.MapGroup("/todoitems");
 
 // we can inject in lambda params in minimum api

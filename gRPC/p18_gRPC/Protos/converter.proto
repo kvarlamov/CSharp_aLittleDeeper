@@ -1,0 +1,33 @@
+syntax = "proto3";
+
+option csharp_namespace = "p18_gRPC";
+
+package converter;
+
+// The greeting service definition.
+service Converter {
+  // Sends a greeting
+  rpc Convert (ConvertRequest) returns (ConvertReply);
+}
+
+// The request message containing the user's name.
+message ConvertRequest {
+  Currency source_currency = 1;
+  double source_value = 2;
+  Currency currency_to_convert = 3;
+}
+
+// The response message containing the greetings.
+message ConvertReply {
+  Currency source_currency = 1;
+  double source_value = 2;
+  Currency currency_to_convert = 3;
+  double converted_value = 4;
+}
+
+enum Currency {
+  UNKNOWN = 0;
+  RUB = 1;
+  USD = 2;
+  EURO = 3;
+}
