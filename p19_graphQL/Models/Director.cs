@@ -1,0 +1,1 @@
+﻿public record Director(long Id, string Name, int Age);

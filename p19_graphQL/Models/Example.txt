@@ -1,0 +1,32 @@
+﻿mutation newDirector {
+  addDirector(input: {name: "Anthony Russo", age: 45}) {
+    record {
+      id
+      name
+    }
+  }  
+}
+
+mutation newMovie {
+  addMovie(input: {name: "Avengers", genre: "Adventure", description: "...", director: "Anthony Russo"}) {
+    record {
+      id
+      name
+      genre
+      description
+      director {
+        name
+      }
+    }
+  }
+}
+
+query Movies {
+  movies {
+    name
+    genre
+    director {
+      name
+    }
+  }
+}

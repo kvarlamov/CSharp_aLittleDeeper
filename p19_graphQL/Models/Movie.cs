@@ -1,0 +1,1 @@
+﻿public record Movie(long Id, string Name, string Genre, string Description, Director Director);
