@@ -40,7 +40,7 @@ public class UserRepository : IUserRepository
         using IDbConnection db = new SqliteConnection(_conn);
         var sql = @"
             select * from Users u 
-                     inner join Addresses a 
+                     left join Addresses a 
                      on u.Id = a.UserId";
         var res = await db.QueryAsync<User, Address, User>(sql, (user, address) =>
         {
@@ -53,5 +53,17 @@ public class UserRepository : IUserRepository
         });
         
         return res.ToList();
+    }
+
+    public async Task<int> Create(User user)
+    {
+        //todo - add Adress model
+        using IDbConnection db = new SqliteConnection(_conn);
+        var sqlQuery =
+            "insert into Users (FirstName, LastName, Age) VALUES (@FirstName, @LastName, @Age); SELECT last_insert_rowid()";
+
+        var userId = await db.QueryAsync<int>(sqlQuery, user);
+
+        return userId.FirstOrDefault();
     }
 }
