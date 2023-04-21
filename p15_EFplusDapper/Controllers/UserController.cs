@@ -60,7 +60,7 @@ public class UserController : Controller
             FirstName = userDto.FirstName,
             LastName = userDto.LastName,
             Age = userDto.Age,
-            // Address = adresses
+            Address = adresses
         };
 
         var createdUserId = await _userRepository.Create(newUser);

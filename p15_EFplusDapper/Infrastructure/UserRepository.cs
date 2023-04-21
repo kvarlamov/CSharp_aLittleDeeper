@@ -62,8 +62,24 @@ public class UserRepository : IUserRepository
         var sqlQuery =
             "insert into Users (FirstName, LastName, Age) VALUES (@FirstName, @LastName, @Age); SELECT last_insert_rowid()";
 
-        var userId = await db.QueryAsync<int>(sqlQuery, user);
+        var userId = (await db.QueryAsync<int>(sqlQuery, user)).FirstOrDefault();
 
-        return userId.FirstOrDefault();
+        var sqlAdress =
+            "insert into Addresses (City, Street, FlatNumber, AdditionalInfo, UserId) Values(@City, @Street, @FlatNumber, @AdditionalInfo, @UserId)";
+
+        
+        foreach (var address in user.Address)
+        {
+            await db.QueryAsync(sqlAdress, new
+            {
+                City = address.City,
+                Street = address.Street,
+                FlatNumber = address.FlatNumBer,
+                AdditionalInfo = address.AdditionalInfo,
+                UserId = userId
+            });
+        }
+
+        return userId;
     }
 }
