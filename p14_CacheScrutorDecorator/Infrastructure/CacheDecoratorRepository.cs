@@ -5,7 +5,8 @@ namespace p15_CacheScrutorDecorator.Infrastructure;
 public class CacheDecoratorRepository : IRepository
 {
     //todo - move expirationSeconds to settings
-    private const int ExpirationSeconds = 5;
+    private const int SlidingExpirationSeconds = 10;
+    private const int AbsoluteExpirationSeconds = 60;
     private readonly IRepository _repository;
     private readonly IMemoryCache _cache;
     private MemoryCacheEntryOptions _cacheOptions;
@@ -16,7 +17,8 @@ public class CacheDecoratorRepository : IRepository
         _repository = repository;
         _cache = cache;
         _cacheOptions = new MemoryCacheEntryOptions()
-            .SetSlidingExpiration(TimeSpan.FromSeconds(ExpirationSeconds));
+            .SetSlidingExpiration(TimeSpan.FromSeconds(SlidingExpirationSeconds))
+            .SetAbsoluteExpiration(TimeSpan.FromSeconds(AbsoluteExpirationSeconds));
     }
     
     public Item? GetItem(int? id)

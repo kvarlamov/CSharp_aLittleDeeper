@@ -1,70 +1,95 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection.Extensions;
 using p17_MinimalApi;
 
-var builder = WebApplication.CreateBuilder(args);
+internal class Program
+{
+    public static IConfiguration Config { get; private set; }
 
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
-builder.Services.AddDbContext<TodoDb>(opt => opt.UseInMemoryDatabase("TodoList"));
-var app = builder.Build();
+    public static void Main(string[] args)
+    {
+        var builder = WebApplication.CreateBuilder(args);
 
-app.UseSwagger();
-app.UseSwaggerUI();
+        builder.Services.AddEndpointsApiExplorer();
+        builder.Services.AddSwaggerGen();
+        builder.Services.AddDbContext<TodoDb>(opt => opt.UseInMemoryDatabase("TodoList"));
+        builder.Services.AddScoped<ICacheService, CacheService>();
+
+        var app = builder.Build();
+
+        app.UseSwagger();
+        app.UseSwaggerUI();
 
 //todo - add unit tests, error handling
 //todo https://learn.microsoft.com/en-us/aspnet/core/tutorials/min-web-api?view=aspnetcore-7.0&tabs=visual-studio#prevent-over-posting
-var todoitems = app.MapGroup("/todoitems");
+        var todoitems = app.MapGroup("/todoitems");
 
 // we can inject in lambda params in minimum api
-todoitems.MapGet("/todoitems", GetAllTodos);
-todoitems.MapGet("/todoitems/completed", GetCompletedTodos);
-todoitems.MapGet("/todoitems/{id}", GetTodoById);
-todoitems.MapPost("/todoitems", CreateTodo);todoitems.MapPut("/todoitems/{id}", UpdateTodo);
-todoitems.MapDelete("/todoitems/{id}", DeleteTodo);
+        todoitems.MapGet("/todoitems", GetAllTodos);
+        todoitems.MapGet("/todoitems/completed", GetCompletedTodos);
+        todoitems.MapGet("/todoitems/{id}", GetTodoById);
+        todoitems.MapPost("/todoitems", (Todo todo, TodoDb db, ICacheService cacheService) => CreateTodo(todo, db, cacheService));todoitems.MapPut("/todoitems/{id}", UpdateTodo);
+        todoitems.MapDelete("/todoitems/{id}", DeleteTodo);
 
-app.Run();
+        Config = app.Configuration;
+        app.Run();
 
-static async Task<IResult> GetAllTodos(TodoDb db) => 
-    TypedResults.Ok(await db.Todos.ToArrayAsync());
+        static async Task<IResult> GetAllTodos(TodoDb db) => 
+            TypedResults.Ok(await db.Todos.ToArrayAsync());
 
-static async Task<IResult> GetCompletedTodos(TodoDb db) => 
-    TypedResults.Ok(await db.Todos.Where(t => t.IsComplete).ToArrayAsync());
+        static async Task<IResult> GetCompletedTodos(TodoDb db) => 
+            TypedResults.Ok(await db.Todos.Where(t => t.IsComplete).ToArrayAsync());
 
-static async Task<IResult> GetTodoById(int id, TodoDb db) =>
-    await db.Todos.FindAsync(id) is Todo todo
-        ? TypedResults.Ok(todo)
-        : TypedResults.NotFound();
-        
-static async Task<IResult> CreateTodo(Todo todo, TodoDb db)
-{
-    db.Todos.Add(todo);
-    await db.SaveChangesAsync();
+        static async Task<IResult> GetTodoById(int id, TodoDb db, ICacheService cache)
+        {
+            var cachedValue = await cache.GetValueAsync<Todo>(id.ToString());
 
-    return TypedResults.Created($"/todoitems/{todo.Id}", todo);
-}
+            if (cachedValue != null)
+                return TypedResults.Ok(cachedValue);
+    
+            if (await db.Todos.FindAsync(id) is Todo todo)
+            {
+                await cache.SetValueAsync(id.ToString(), todo);
+                return TypedResults.Ok(todo);
+            }
 
-async Task<IResult> UpdateTodo(int id, Todo inputTodo, TodoDb db)
-{
-    var existingTodo = await db.Todos.FindAsync(id);
-    if (existingTodo is null) return TypedResults.NotFound();
+            return TypedResults.NotFound();
+        }
 
-    existingTodo.Name = inputTodo.Name;
-    existingTodo.IsComplete = inputTodo.IsComplete;
+        static async Task<IResult> CreateTodo(Todo todo, TodoDb db, ICacheService cache)
+        {
+            db.Todos.Add(todo);
+            await db.SaveChangesAsync();
 
-    await db.SaveChangesAsync();
+            await cache.SetValueAsync(todo.Id.ToString(), todo);
 
-    return TypedResults.NoContent();
-}
+            return TypedResults.Created($"/todoitems/{todo.Id}", todo);
+        }
 
-static async Task<IResult> DeleteTodo(int id, TodoDb db)
-{
-    if (await db.Todos.FindAsync(id) is Todo todo)
-    {
-        db.Todos.Remove(todo);
-        await db.SaveChangesAsync();
-        return TypedResults.Ok(todo);
+        async Task<IResult> UpdateTodo(int id, Todo inputTodo, TodoDb db)
+        {
+            var existingTodo = await db.Todos.FindAsync(id);
+            if (existingTodo is null) return TypedResults.NotFound();
+
+            existingTodo.Name = inputTodo.Name;
+            existingTodo.IsComplete = inputTodo.IsComplete;
+
+            await db.SaveChangesAsync();
+
+            return TypedResults.NoContent();
+        }
+
+        static async Task<IResult> DeleteTodo(int id, TodoDb db)
+        {
+            if (await db.Todos.FindAsync(id) is Todo todo)
+            {
+                db.Todos.Remove(todo);
+                await db.SaveChangesAsync();
+                return TypedResults.Ok(todo);
+            }
+
+            return TypedResults.NotFound();
+        }
     }
-
-    return TypedResults.NotFound();
 }
