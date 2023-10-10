@@ -1,5 +1,23 @@
 ﻿// See https://aka.ms/new-console-template for more information
 
+/* Awaitable pattern:
+ 
+metdod run to await expression
+1 - bool IsCompleted() - check if operation is completed
+
+2 - TResult GetResult() - fetch result when operation completed
+
+3 - void OnCompleted(Action continuation) - attach continuation to not completed operation
+
+Conditions of awaiter pattern:
+
+Your type needs a GetAwaiter() method that returns an awaiter type.
+The awaiter type must implement the System.Runtime.INotifyCompletion interface. That interface contains a single method: void OnCompleted(Action).
+The awaiter type must have a readable instance property bool IsCompleted.
+The awaiter type must have an instance method GetResult(). This method can return data, or it can be void. The return type of this method determines the result of the async operation.
+
+*/
+
 using System.Runtime.CompilerServices;
 
 Console.WriteLine("before first await");
