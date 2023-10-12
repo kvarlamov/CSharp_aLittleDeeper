@@ -25,6 +25,7 @@ namespace p11_DesighnPatterns
             //Adapter.Test();
             //FacadeEx.Test();
             //DecoratorEx.Start();
+            SimpleDecoratorEx.Test();
 
             #endregion
 
@@ -33,7 +34,7 @@ namespace p11_DesighnPatterns
             //StrategyEx.Test();
             // TemplateMethodEx.Test();
             //MediatorEx.Start();
-            VisitorEx.Test();
+            //VisitorEx.Test();
 
             #endregion
             

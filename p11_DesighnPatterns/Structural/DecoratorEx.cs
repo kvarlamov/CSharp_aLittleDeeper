@@ -2,6 +2,69 @@
 
 namespace p11_DesighnPatterns.Structural
 {
+    internal class SimpleDecoratorEx
+    {
+        public static void Test()
+        {
+            Console.WriteLine("Client without decorator");
+            ClientBehaviour clientBehaviour = new ClientBehaviour();
+            clientBehaviour.DoingSomething();
+
+            Console.WriteLine("\n Apply decorator 1");
+            ClientDecorator1 clientDecorator1 = new ClientDecorator1(clientBehaviour);
+            clientDecorator1.DoingSomething();
+
+            Console.WriteLine("\n Apply decorator 2");
+            ClientDecorator2 clientDecorator2 = new ClientDecorator2(clientDecorator1);
+            clientDecorator2.DoingSomething();
+        }
+        
+        private interface IClientBehaviour
+        {
+            void DoingSomething();
+        }
+        
+        private class ClientBehaviour : IClientBehaviour
+        {
+            public void DoingSomething()
+            {
+                Console.WriteLine("Client doing something");
+            }
+        }
+        
+        private class ClientDecorator1 : IClientBehaviour
+        {
+            private readonly IClientBehaviour _clientBehaviour;
+
+            public ClientDecorator1(IClientBehaviour clientBehaviour)
+            {
+                _clientBehaviour = clientBehaviour;
+            }
+
+            public void DoingSomething()
+            {
+                _clientBehaviour.DoingSomething();
+                Console.WriteLine("Decorated 1");
+            }
+        }
+        
+        private class ClientDecorator2 : IClientBehaviour
+        {
+            private readonly IClientBehaviour _clientBehaviour;
+
+            public ClientDecorator2(IClientBehaviour clientBehaviour)
+            {
+                _clientBehaviour = clientBehaviour;
+            }
+
+            public void DoingSomething()
+            {
+                _clientBehaviour.DoingSomething();
+                Console.WriteLine("Decorated 2");
+            }
+        }
+    }
+    
     internal class DecoratorEx
     {
         public static void Start()
