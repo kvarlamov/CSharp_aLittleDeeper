@@ -15,7 +15,7 @@ namespace p11_DesighnPatterns.Behavioral
             nav.Execute(new PublicTransportStrategy(), strategy => strategy.BuildRoute());
         }
 
-        public class Navigator
+        private class Navigator
         {
             public IRouteStrategy Strategy { get; private set; }
 
@@ -36,12 +36,12 @@ namespace p11_DesighnPatterns.Behavioral
             }
         }
 
-        public interface IRouteStrategy
+        private interface IRouteStrategy
         {
             void BuildRoute();
         }
 
-        public class CarStrategy : IRouteStrategy
+        private class CarStrategy : IRouteStrategy
         {
             public string Name { get; set; }
             public void BuildRoute()
@@ -50,7 +50,7 @@ namespace p11_DesighnPatterns.Behavioral
             }
         }
 
-        public class WalkingStrategy : IRouteStrategy
+        private class WalkingStrategy : IRouteStrategy
         {
             public void BuildRoute()
             {
@@ -58,7 +58,7 @@ namespace p11_DesighnPatterns.Behavioral
             }
         }
 
-        public class PublicTransportStrategy : IRouteStrategy
+        private class PublicTransportStrategy : IRouteStrategy
         {
             public void BuildRoute()
             {
