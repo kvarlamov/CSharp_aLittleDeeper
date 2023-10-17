@@ -40,8 +40,7 @@ namespace p23_ExpressionTrees
         
         private Expression<Func<TEntity, bool>> CreateNextExpression(Expression<Func<TEntity,bool>> currentExpression, Expression<Func<TEntity,bool>> nextExpression, ConditionKind filterConditionKind)
         {
-            // todo read about visitor pattern
-            throw new NotImplementedException();
+            return filterConditionKind == ConditionKind.Or ? currentExpression.OrElse(nextExpression) : currentExpression.AndAlso(nextExpression);
         }
         
         private Expression<Func<TEntity,bool>> GetInitialExpression() => parameter => true;
