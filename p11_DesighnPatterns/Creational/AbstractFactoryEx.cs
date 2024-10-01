@@ -7,10 +7,10 @@ namespace p11_DesighnPatterns
         public static void Test()
         {
             Console.WriteLine("Wood furniture");
-            var order = new FurnitureOrder(new WoodFurniture());
+            var order = new FurnitureOrder(new WoodFurnitureFactory());
             order.PrintInfo();
             Console.WriteLine("\nIron furniture");
-            order = new FurnitureOrder(new IronFurniture());
+            order = new FurnitureOrder(new IronFurnitureFactory());
             order.PrintInfo();
         }
     }
@@ -39,7 +39,7 @@ namespace p11_DesighnPatterns
         public abstract IChair GetChairs();
     }
 
-    public class WoodFurniture : FurnitureFactory
+    public class WoodFurnitureFactory : FurnitureFactory
     {
         public override IDesk GetTables()
         {
@@ -52,7 +52,7 @@ namespace p11_DesighnPatterns
         }
     }
     
-    public class IronFurniture : FurnitureFactory
+    public class IronFurnitureFactory : FurnitureFactory
     {
         public override IDesk GetTables()
         {

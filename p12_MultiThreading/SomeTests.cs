@@ -28,7 +28,7 @@ namespace p12_MultiThreading
                 try
                 {
                     rwl.EnterUpgradeableReadLock();
-                    var result = _dic.ContainsKey(j) ? _dic[j] * 10 : j*10;
+                    var result = _dic.TryGetValue(j, out var value) ? value * 10 : j*10;
                     try
                     {
                         rwl.EnterWriteLock();

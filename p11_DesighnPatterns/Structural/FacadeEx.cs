@@ -111,4 +111,9 @@ namespace p11_DesighnPatterns.Structural
             return text;
         }
     }
+
+    public interface ISomeLib
+    {
+        
+    }
 }

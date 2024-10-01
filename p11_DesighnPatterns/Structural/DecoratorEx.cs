@@ -164,4 +164,44 @@ namespace p11_DesighnPatterns.Structural
             Console.WriteLine($"notify facebook: {msg}");
         }
     }
+
+    public static class TestClient
+    {
+        public static void HandleResponse()
+        {
+            Client cl = new Client();
+        }
+    }
+
+    public abstract class BaseClient
+    {
+        public int Discount { get; set; }
+        
+        public abstract void ProcessClient();
+    }
+
+    public class Client : BaseClient
+    {
+        public override void ProcessClient()
+        {
+            Console.WriteLine("Do something with a client");
+        }
+    }
+
+
+    public class VipClient : BaseClient
+    {
+        private readonly BaseClient _client;
+
+        public VipClient(BaseClient client)
+        {
+            _client = client;
+        }
+        
+        public override void ProcessClient()
+        {
+            // additional functionality or client modification
+            _client.ProcessClient();
+        }
+    }
 }

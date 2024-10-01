@@ -9,7 +9,7 @@ public class CacheDecoratorRepository : IRepository
     private const int AbsoluteExpirationSeconds = 60;
     private readonly IRepository _repository;
     private readonly IMemoryCache _cache;
-    private MemoryCacheEntryOptions _cacheOptions;
+    private readonly MemoryCacheEntryOptions _cacheOptions;
 
     //todo - inject cache options
     public CacheDecoratorRepository(IRepository repository, IMemoryCache cache)//, MemoryCacheEntryOptions cacheOptions)
